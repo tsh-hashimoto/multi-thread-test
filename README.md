@@ -8,7 +8,7 @@ multi-thread-test
 │   └── MTBase.java
 └── tests           　... テストコードを格納するディレクトリ
     ├── MTTest.java 　... マルチスレッドのテスト用のプログラム
-    └── STTest.java　... シングルスレッドのテスト用のプログラム
+    └── STTest.java　 ... シングルスレッドのテスト用のプログラム
 ```
 
 # コンパイルと実行
