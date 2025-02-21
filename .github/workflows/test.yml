@@ -31,5 +31,5 @@ jobs:
           cd out
           for classfile in $(find . -name "*.class" | grep "^./tests/" | sed 's|./||' | sed 's|.class$||' | tr '/' '.'); do
             echo "Running $classfile..."
-            java -cp . $classfile
+            java -cp . $classfile > /dev/null
           done
