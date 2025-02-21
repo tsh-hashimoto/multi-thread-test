@@ -18,3 +18,11 @@ multi-thread-test
 $ javac -d . -cp . tests/MTTest.java
 $ java -cp . tests.MTTest
 ```
+
+# CIでの実行
+上記のコンパイルと実行のコマンドを走らせる。`lib` ディレクトリおよび `tests` ディレクトリにあるJavaプログラムはそれぞれ数が固定ではないので、ループしてすべてのファイルをコンパイルするように書いている。
+実行したとき、ログには以下のように出力される。
+```shell
+Running tests.MTTest...
+Running tests.STTest...
+```
