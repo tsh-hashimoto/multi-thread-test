@@ -1,0 +1,35 @@
+name: Java Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Compile Java sources
+        run: |
+          mkdir -p out
+          find lib tests -name "*.java" > sources.txt
+          javac -d out -cp lib:. @sources.txt
+
+      - name: Run Java tests
+        run: |
+          cd out
+          for classfile in $(find . -name "*.class" | grep "^./tests/" | sed 's|./||' | sed 's|.class$||' | tr '/' '.'); do
+            echo "Running $classfile..."
+            java -cp . $classfile
+          done
